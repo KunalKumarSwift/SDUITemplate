@@ -1,0 +1,113 @@
+{
+    "components": [
+        {
+            "type": "VStack",
+            "children": [
+                {
+                    "type": "Text",
+                    "content": "Hello, World!",
+                    "font": "headline",
+                    "color": "primary",
+                    "accessibility": {
+                        "label": "Greeting Text"
+                    }
+                },
+                {
+                    "type": "Button",
+                    "content": "Click Me",
+                    "action": "buttonAction",
+                    "font": "body",
+                    "backgroundColor": "blue",
+                    "foregroundColor": "white",
+                    "accessibility": {
+                        "label": "Clickable Button"
+                    }
+                },
+                {
+                    "type": "DatePicker",
+                    "label": "Select Date",
+                    "accessibility": {
+                        "label": "Date Picker"
+                    }
+                },
+                {
+                    "type": "Link",
+                    "content": "Visit Google",
+                    "url": "https://www.google.com",
+                    "font": "body",
+                    "color": "blue",
+                    "accessibility": {
+                        "label": "google Website Link"
+                    }
+                },
+                {
+                    "type": "Chart",
+                    "data": [
+                        {"label": "Q1", "value": 10},
+                        {"label": "Q2", "value": 20},
+                        {"label": "Q3", "value": 30},
+                        {"label": "Q4", "value": 40}
+                    ],
+                    "accessibility": {
+                        "label": "Quarterly Data Chart"
+                    }
+                },
+                {
+                    "type": "Form",
+                    "sections": [
+                        {
+                            "type": "Section",
+                            "header": "Personal Info",
+                            "footer": "Please provide your personal information",
+                            "children": [
+                                {
+                                    "type": "TextField",
+                                    "label": "Name",
+                                    "placeholder": "Enter your name",
+                                    "accessibility": {
+                                        "label": "Name TextField"
+                                    }
+                                },
+                                {
+                                    "type": "Picker",
+                                    "label": "Gender",
+                                    "options": ["Male", "Female", "Other"],
+                                    "selectedIndex": 0,
+                                    "accessibility": {
+                                        "label": "Gender Picker"
+                                    }
+                                },
+                                {
+                                    "type": "Toggle",
+                                    "label": "Subscribe to Newsletter",
+                                    "isOn": true,
+                                    "accessibility": {
+                                        "label": "Newsletter Toggle"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Section",
+                            "header": "Settings",
+                            "footer": "Customize your settings",
+                            "children": [
+                                {
+                                    "type": "Toggle",
+                                    "label": "Enable Notifications",
+                                    "isOn": false,
+                                    "accessibility": {
+                                        "label": "Notifications Toggle"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "accessibility": {
+                        "label": "Form"
+                    }
+                }
+            ]
+        }
+    ]
+}
