@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F4B410C2D8DB1230079182B /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4B410B2D8DB11F0079182B /* PickerView.swift */; };
+		5F4B410E2D8DB19B0079182B /* ToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4B410D2D8DB1980079182B /* ToggleView.swift */; };
+		5F4B41102D8DB21D0079182B /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4B410F2D8DB21A0079182B /* ChartView.swift */; };
+		5F4B41122D8DB2AF0079182B /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4B41112D8DB2AC0079182B /* TextFieldView.swift */; };
+		5F4B41142D8DB4BE0079182B /* LinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4B41132D8DB4BC0079182B /* LinkView.swift */; };
+		5F4B41162D8DB6430079182B /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4B41152D8DB6400079182B /* ButtonView.swift */; };
+		5F4B41182D8DB6FA0079182B /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4B41172D8DB6F70079182B /* TextView.swift */; };
+		5F4B411A2D8DB75E0079182B /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4B41192D8DB7570079182B /* DatePickerView.swift */; };
+		5F4B411C2D8DC78B0079182B /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4B411B2D8DC7880079182B /* FormView.swift */; };
 		5F82F5AB2C370D1600D72055 /* ServerDrivenMultiPlatformApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F82F5AA2C370D1600D72055 /* ServerDrivenMultiPlatformApp.swift */; };
 		5F82F5AD2C370D1600D72055 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F82F5AC2C370D1600D72055 /* ContentView.swift */; };
 		5F82F5AF2C370D1800D72055 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F82F5AE2C370D1800D72055 /* Assets.xcassets */; };
@@ -39,6 +48,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F4B410B2D8DB11F0079182B /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		5F4B410D2D8DB1980079182B /* ToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleView.swift; sourceTree = "<group>"; };
+		5F4B410F2D8DB21A0079182B /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		5F4B41112D8DB2AC0079182B /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		5F4B41132D8DB4BC0079182B /* LinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkView.swift; sourceTree = "<group>"; };
+		5F4B41152D8DB6400079182B /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		5F4B41172D8DB6F70079182B /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		5F4B41192D8DB7570079182B /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		5F4B411B2D8DC7880079182B /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 		5F82F5A72C370D1600D72055 /* ServerDrivenMultiPlatform.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ServerDrivenMultiPlatform.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F82F5AA2C370D1600D72055 /* ServerDrivenMultiPlatformApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerDrivenMultiPlatformApp.swift; sourceTree = "<group>"; };
 		5F82F5AC2C370D1600D72055 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -146,6 +164,15 @@
 		5F82F5D72C370D7100D72055 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5F4B411B2D8DC7880079182B /* FormView.swift */,
+				5F4B41192D8DB7570079182B /* DatePickerView.swift */,
+				5F4B41172D8DB6F70079182B /* TextView.swift */,
+				5F4B41152D8DB6400079182B /* ButtonView.swift */,
+				5F4B41132D8DB4BC0079182B /* LinkView.swift */,
+				5F4B41112D8DB2AC0079182B /* TextFieldView.swift */,
+				5F4B410F2D8DB21A0079182B /* ChartView.swift */,
+				5F4B410D2D8DB1980079182B /* ToggleView.swift */,
+				5F4B410B2D8DB11F0079182B /* PickerView.swift */,
 				5F82F5D52C370D7100D72055 /* DyanamicView+Extensions.swift */,
 				5F82F5D62C370D7100D72055 /* DynamicView.swift */,
 			);
@@ -299,11 +326,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F4B410E2D8DB19B0079182B /* ToggleView.swift in Sources */,
 				5F82F5DC2C370D7700D72055 /* UIViewModel.swift in Sources */,
+				5F4B41162D8DB6430079182B /* ButtonView.swift in Sources */,
 				5F82F5D92C370D7100D72055 /* DynamicView.swift in Sources */,
+				5F4B411A2D8DB75E0079182B /* DatePickerView.swift in Sources */,
 				5F82F5AD2C370D1600D72055 /* ContentView.swift in Sources */,
 				5F82F5AB2C370D1600D72055 /* ServerDrivenMultiPlatformApp.swift in Sources */,
+				5F4B41102D8DB21D0079182B /* ChartView.swift in Sources */,
 				5F82F5D82C370D7100D72055 /* DyanamicView+Extensions.swift in Sources */,
+				5F4B410C2D8DB1230079182B /* PickerView.swift in Sources */,
+				5F4B41122D8DB2AF0079182B /* TextFieldView.swift in Sources */,
+				5F4B41182D8DB6FA0079182B /* TextView.swift in Sources */,
+				5F4B411C2D8DC78B0079182B /* FormView.swift in Sources */,
+				5F4B41142D8DB4BE0079182B /* LinkView.swift in Sources */,
 				5F82F5DF2C370D8200D72055 /* UIModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

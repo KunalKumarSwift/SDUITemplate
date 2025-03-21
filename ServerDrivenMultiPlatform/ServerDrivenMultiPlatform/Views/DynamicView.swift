@@ -12,20 +12,27 @@ struct DynamicView: View {
     @State private var uiComponents: [UIComponent] = []
 
     var body: some View {
-        VStack {
-            //Text("Hellow")
-            ForEach(viewModel.uiComponents.indices, id: \.self) { index in
-                renderComponent(viewModel.uiComponents[index])
-                    .padding()
+        NavigationView {
+            GeometryReader { geometry in  // Capture Geometry of the parent ScrollView
+                ScrollView {
+                    VStack {
+                        ForEach(viewModel.uiComponents.indices, id: \.self) { index in
+                            renderComponent(viewModel.uiComponents[index], geometry: geometry)  // Pass Geometry to the child
+                                .padding()
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                    }
+                }
+                .navigationTitle("Dynamic View")
             }
         }
     }
 
     @ViewBuilder
-    func renderComponent(_ component: UIComponent) -> some View {
+    func renderComponent(_ component: UIComponent, geometry: GeometryProxy) -> some View {
         switch component.type {
         case "VStack":
-            renderVStack(component)
+            renderVStack(component, geometry: geometry)
         case "Text":
             renderText(component)
         case "Button":
@@ -35,9 +42,9 @@ struct DynamicView: View {
         case "Link":
             renderLink(component)
         case "Chart":
-            renderChart(component)
+            renderChart(component, geometry: geometry)
         case "Form":
-            renderForm(component)
+            renderForm(component, geometry: geometry)
         case "TextField":
             renderTextField(component)
         case "Picker":

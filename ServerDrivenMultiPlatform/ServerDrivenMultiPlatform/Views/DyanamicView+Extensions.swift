@@ -10,11 +10,11 @@ import SwiftUI
 // MARK: Render Extensions
 extension DynamicView {
     @ViewBuilder
-    func renderVStack(_ component: UIComponent) -> some View {
+    func renderVStack(_ component: UIComponent, geometry: GeometryProxy) -> some View {
         VStack {
             if let children = component.children {
                 ForEach(children.indices, id: \.self) { index in
-                    renderComponent(children[index])
+                    renderComponent(children[index], geometry: geometry)
                 }
             } else {
                 Text("-renderVStack-")
@@ -24,95 +24,69 @@ extension DynamicView {
 
     @ViewBuilder
     func renderText(_ component: UIComponent) -> some View {
-        if let content = component.content {
-            Text(content)
-                .font(parseFont(component.font))
-                .foregroundColor(parseColor(component.color))
-                .accessibility(label: Text(component.accessibility?.label ?? ""))
-        } else {
-            Text("-renderText-")
-        }
+        TextView(
+                content: component.content,
+                font: parseFont(component.font),
+                color: parseColor(component.color),
+                accessibilityLabel: component.accessibility?.label
+            )
     }
 
     @ViewBuilder
     func renderButton(_ component: UIComponent) -> some View {
-        if let content = component.content, let action = component.action {
-            Button(action: {
-                viewModel.performAction(named: action)
-            }) {
-                Text(content)
-                    .font(parseFont(component.font))
-                    .foregroundColor(parseColor(component.foregroundColor))
-            }
-            .padding()
-            .background(parseColor(component.backgroundColor))
-            .cornerRadius(8)
-            .accessibility(label: Text(component.accessibility?.label ?? ""))
-        } else {
-            Text("-renderButton-")
-        }
+        ButtonView(
+                content: component.content,
+                action: component.action,
+                font: parseFont(component.font),
+                foregroundColor: parseColor(component.foregroundColor),
+                backgroundColor: parseColor(component.backgroundColor),
+                accessibilityLabel: component.accessibility?.label,
+                viewModel: viewModel
+            )
     }
 
     @ViewBuilder
     func renderDatePicker(_ component: UIComponent) -> some View {
-        if let label = component.label {
-            DatePicker(label, selection: .constant(Date()))
-                .accessibility(label: Text(component.accessibility?.label ?? ""))
-        } else {
-            Text("-renderDatePicker-")
-        }
+        DatePickerView(
+                label: component.label,
+                accessibilityLabel: component.accessibility?.label
+            )
     }
 
     @ViewBuilder
     func renderLink(_ component: UIComponent) -> some View {
-        if let content = component.content, let urlString = component.url, let url = URL(string: urlString) {
-            Link(content, destination: url)
-                .font(parseFont(component.font))
-                .foregroundColor(parseColor(component.color))
-                .accessibility(label: Text(component.accessibility?.label ?? ""))
-        } else {
-            Text("-renderDatePicker-")
-        }
+        LinkView(
+                content: component.content,
+                urlString: component.url,
+                font: parseFont(component.font),
+                color: parseColor(component.color),
+                accessibilityLabel: component.accessibility?.label
+            )
     }
 
     @ViewBuilder
-    func renderChart(_ component: UIComponent) -> some View {
+    func renderChart(_ component: UIComponent, geometry: GeometryProxy) -> some View {
         if let data = component.data {
-            VStack {
-                ForEach(data, id: \.label) { dataPoint in
-                    HStack {
-                        Text(dataPoint.label)
-                        Spacer()
-                        Rectangle()
-                            .fill(Color.blue)
-                            .frame(width: CGFloat(dataPoint.value * 10), height: 20)
-                    }
-                }
-            }
-            .accessibility(label: Text(component.accessibility?.label ?? ""))
+            ChartView(data: data, geometry: geometry)
+                .accessibility(label: Text(component.accessibility?.label ?? ""))
         } else {
             Text("-renderChart-")
         }
     }
 
     @ViewBuilder
-    func renderForm(_ component: UIComponent) -> some View {
-        if let sections = component.sections {
-            Form {
-                ForEach(sections, id: \.self.header) { section in
-                    Section(
-                        header: Text(section.header ?? ""),
-                        footer: Text(section.footer ?? "")
-                    ) {
-                        if let children = section.children {
-                            ForEach(children, id: \.self.label) { child in
-                                renderComponent(child)
-                            }
-                        }
+    func renderForm(_ component: UIComponent, geometry: GeometryProxy) -> some View {
+        if let sections = component.sections, !sections.isEmpty {
+            FormView(
+                sections: sections,
+                accessibilityLabel: component.accessibility?.label ?? "Form"
+            ) { section in
+                AnyView(
+                    ForEach(section.children ?? [], id: \.id) { child in
+                        renderComponent(child, geometry: geometry)
                     }
-                }
+                )
             }
-            .accessibility(label: Text(component.accessibility?.label ?? ""))
         } else {
             Text("-renderForm-")
         }
@@ -120,30 +94,13 @@ extension DynamicView {
 
     @ViewBuilder
     func renderTextField(_ component: UIComponent) -> some View {
-        if let label = component.label, let placeholder = component.placeholder {
-            VStack(alignment: .leading) {
-                Text(label)
-                TextField(placeholder, text: .constant(""))
-                    .accessibility(label: Text(component.accessibility?.label ?? ""))
-            }
-        } else {
-            Text("-renderTextField-")
-        }
+        TextFieldView(label: component.label, placeholder: component.placeholder, accessibilityLabel: component.accessibility?.label)
     }
 
     @ViewBuilder
     func renderPicker(_ component: UIComponent) -> some View {
-        if let label = component.label, let options = component.options, let selectedIndex = component.selectedIndex {
-            VStack(alignment: .leading) {
-                Text(label)
-                Picker(label, selection: .constant(selectedIndex)) {
-                    ForEach(0..<options.count) { index in
-                        Text(options[index]).tag(index)
-                    }
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .accessibility(label: Text(component.accessibility?.label ?? ""))
-            }
+        if let label = component.label, let options = component.options {
+            PickerView(label: label, options: options, initialIndex: component.selectedIndex ?? 0)
         } else {
             Text("-renderPicker-")
         }
@@ -151,9 +108,8 @@ extension DynamicView {
 
     @ViewBuilder
     func renderToggle(_ component: UIComponent) -> some View {
-        if let label = component.label, let isOn = component.isOn {
-            Toggle(label, isOn: .constant(isOn))
-                .accessibility(label: Text(component.accessibility?.label ?? ""))
+        if let label = component.label, let initialState = component.isOn {
+            ToggleView(label: label, initialState: initialState)
         } else {
             Text("-renderToggle-")
         }

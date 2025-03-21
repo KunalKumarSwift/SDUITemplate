@@ -32,7 +32,7 @@ struct UIComponent: Codable, Equatable, Identifiable {
     let label: String?
     let placeholder: String?
     let options: [String]?
-    let selectedIndex: Int?
+    var selectedIndex: Int?
     let isOn: Bool?
     let sections: [UIComponent]?
     let header: String?
