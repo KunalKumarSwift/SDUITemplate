@@ -14,7 +14,7 @@ struct DynamicView: View {
     var body: some View {
         VStack {
             //Text("Hellow")
-            ForEach(uiComponents.indices, id: \.self) { index in
+            ForEach(viewModel.uiComponents.indices, id: \.self) { index in
                 renderComponent(viewModel.uiComponents[index])
                     .padding()
             }

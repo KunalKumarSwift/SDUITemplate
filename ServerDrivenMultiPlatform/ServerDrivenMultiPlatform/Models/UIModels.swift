@@ -16,8 +16,8 @@ struct ChartData: Codable, Equatable {
     let value: Double
 }
 
-struct UIComponent: Codable, Equatable {
-    //var id: UUID = UUID()
+struct UIComponent: Codable, Equatable, Identifiable {
+    let id: UUID = UUID()
     let type: String
     let content: String?
     let action: String?
